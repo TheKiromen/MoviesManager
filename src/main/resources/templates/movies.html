@@ -10,6 +10,13 @@
         <div class="row">
             <h1>MoviesManager - Movie list</h1>
         </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{movies/new}" class="btn btn-primary btn-sm mb-3">Add new Movie</a>
+            </div>
+        </div>
+
         <table class="table table-striped">
             <thead class="table-secondary">
             <tr>
@@ -22,11 +29,11 @@
             </thead>
             <tbody>
             <tr th:each="movie:${movies}">
-                <td th:text="${movies.id}"></td>
-                <td th:text="${movies.title}"></td>
-                <td th:text="${movies.director}"></td>
-                <td th:text="${movies.duration}"></td>
-                <td th:text="${movies.premiere}"></td>
+                <td th:text="${movie.id}"></td>
+                <td th:text="${movie.title}"></td>
+                <td th:text="${movie.director}"></td>
+                <td th:text="${movie.duration}"></td>
+                <td th:text="${movie.premiere}"></td>
             </tr>
             </tbody>
         </table>
