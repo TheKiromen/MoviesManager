@@ -5,6 +5,9 @@ import com.dkrucze.MoviesManager.Entity.Movie;
 import java.util.List;
 
 public interface MovieService {
-    public List<Movie> getAllMovies();
-    public Movie saveMovie(Movie movie);
+    List<Movie> getAllMovies();
+    Movie getMovieById(Long id);
+    Movie saveMovie(Movie movie);
+    Movie updateMovie(Movie movie);
+    void deleteMovie(Long id);
 }

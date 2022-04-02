@@ -23,7 +23,22 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public Movie getMovieById(Long id) {
+        return movieRepository.findById(id).get();
+    }
+
+    @Override
     public Movie saveMovie(Movie movie) {
         return movieRepository.save(movie);
+    }
+
+    @Override
+    public Movie updateMovie(Movie movie) {
+        return movieRepository.save(movie);
+    }
+
+    @Override
+    public void deleteMovie(Long id) {
+        movieRepository.deleteById(id);
     }
 }
