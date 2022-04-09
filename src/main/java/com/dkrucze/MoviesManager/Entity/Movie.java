@@ -6,8 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,13 +21,18 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NotEmpty
     private String title;
     @Min(0)
     private int duration=0;
+    @NotNull
     private String director;
+    @NotNull
     private Date premiere;
-    //TODO: Add description, link to poster, reviews?
+    private String posterURL;
+    private String description;
+    @OneToMany(mappedBy = "movie")
+    private Set<Review> reviews;
 
     public Movie(String title, int duration, String director, Date premiere) {
         super();
@@ -33,5 +40,14 @@ public class Movie {
         this.duration = duration;
         this.director = director;
         this.premiere = premiere;
+    }
+
+    public Movie(String title, int duration, String director, Date premiere, String posterURL, String description) {
+        this.title = title;
+        this.duration = duration;
+        this.director = director;
+        this.premiere = premiere;
+        this.posterURL = posterURL;
+        this.description = description;
     }
 }
