@@ -29,4 +29,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews;
 
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }

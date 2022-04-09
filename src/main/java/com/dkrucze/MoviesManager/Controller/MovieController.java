@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/api/movies")
 public class MovieController {
 
     private MovieService movieService;
@@ -17,32 +17,32 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
+    @GetMapping
     public String listMovies(Model model){
         model.addAttribute("movies",movieService.getAllMovies());
         return "movies";
     }
 
-    @GetMapping("/movies/new")
+    @GetMapping("/new")
     public String createMovieForm(Model model){
         Movie movie = new Movie();
         model.addAttribute("movie",movie);
         return "create_movie";
     }
 
-    @GetMapping("/movies/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editMovieForm(@PathVariable Long id, Model model){
         model.addAttribute("movie",movieService.getMovieById(id));
         return "edit_movie";
     }
 
-    @PostMapping("/movies")
+    @PostMapping
     public String saveMovie(@ModelAttribute("movie") Movie movie){
         movieService.saveMovie(movie);
         return "redirect:/api/movies";
     }
 
-    @PostMapping("/movies/edit/{id}")
+    @PostMapping("/edit/{id}")
     public String updateMovie(@PathVariable Long id, @ModelAttribute("movie") Movie movie, Model model){
         Movie existingMovie = movieService.getMovieById(id);
         existingMovie.setId(id);
@@ -55,7 +55,7 @@ public class MovieController {
         return "redirect:/api/movies";
     }
 
-    @GetMapping("/movies/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteMovie(@PathVariable Long id){
         movieService.deleteMovie(id);
         return "redirect:/api/movies";
