@@ -4,6 +4,7 @@ import com.dkrucze.MoviesManager.Service.UserService;
 import com.dkrucze.MoviesManager.Web.Dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,18 @@ public class UserRegistrationController {
     @Autowired
     private UserService userService;
 
-    //FIXME Getting nulls from DTO
+    //Maps user model in request to specified DTO
+    @ModelAttribute("user")
+    public UserRegistrationDto userRegistrationDto(){
+        return new UserRegistrationDto();
+    }
+
+    @GetMapping
+    public String showRegistrationForm(){
+        return "register";
+    }
+
+    //TODO after success redirect to login page
     @PostMapping
     public String registerUser(@ModelAttribute("user") UserRegistrationDto userRegistrationDto){
         userService.saveUser(userRegistrationDto);
