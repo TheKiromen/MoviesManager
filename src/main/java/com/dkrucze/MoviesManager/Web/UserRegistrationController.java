@@ -1,4 +1,4 @@
-package com.dkrucze.MoviesManager.Controller;
+package com.dkrucze.MoviesManager.Web;
 
 import com.dkrucze.MoviesManager.Service.UserService;
 import com.dkrucze.MoviesManager.Web.Dto.UserRegistrationDto;
