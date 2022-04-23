@@ -5,6 +5,8 @@ import com.dkrucze.MoviesManager.Repository.UserRepository;
 import com.dkrucze.MoviesManager.Service.UserService;
 import com.dkrucze.MoviesManager.Web.Dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,4 +24,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //TODO
+        return null;
+    }
 }

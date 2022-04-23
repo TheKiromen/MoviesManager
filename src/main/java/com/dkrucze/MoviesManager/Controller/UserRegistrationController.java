@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/register")
+@RequestMapping("/register")
 public class UserRegistrationController {
 
     @Autowired
