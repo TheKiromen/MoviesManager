@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    //FIXME fix error
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
