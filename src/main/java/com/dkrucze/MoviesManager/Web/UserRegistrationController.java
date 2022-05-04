@@ -27,7 +27,6 @@ public class UserRegistrationController {
         return "register";
     }
 
-    //TODO after success redirect to login page
     @PostMapping
     public String registerUser(@ModelAttribute("user") UserRegistrationDto userRegistrationDto){
         userService.saveUser(userRegistrationDto);
