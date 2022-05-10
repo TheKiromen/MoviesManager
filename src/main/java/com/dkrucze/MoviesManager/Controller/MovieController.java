@@ -17,11 +17,11 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping
-    public String listMovies(Model model){
-        model.addAttribute("movies",movieService.getAllMovies());
-        return "movies";
-    }
+//    @GetMapping
+//    public String listMovies(Model model){
+//        model.addAttribute("movies",movieService.getAllMovies());
+//        return "movies";
+//    }
 
     @GetMapping("/new")
     public String createMovieForm(Model model){

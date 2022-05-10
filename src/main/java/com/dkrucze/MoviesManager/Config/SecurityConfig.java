@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
+                //TODO implement getting authorities from DB
+                //.antMatchers("/api/movies/**").hasAuthority("ADMIN")
                 .antMatchers("/register**")
                 .permitAll().anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").permitAll().and()

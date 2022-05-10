@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),mapRolesToAuthorities());
     }
 
-    //TODO Check if roles work
+    //TODO Implement saving and getting authorities from DB
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(){
         LinkedList authorities = new LinkedList<SimpleGrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("USER"));
