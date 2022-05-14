@@ -30,6 +30,9 @@ public class User {
     @NotNull
     @NotEmpty
     private String password;
+    @NotNull
+    @NotEmpty
+    private String authority;
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews;
 
@@ -37,5 +40,6 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.authority="USER";
     }
 }

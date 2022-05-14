@@ -1,6 +1,7 @@
 package com.dkrucze.MoviesManager.Service.Impl;
 
 import com.dkrucze.MoviesManager.Entity.User;
+import com.dkrucze.MoviesManager.Entity.UserPrincipal;
 import com.dkrucze.MoviesManager.Repository.UserRepository;
 import com.dkrucze.MoviesManager.Service.UserService;
 import com.dkrucze.MoviesManager.Web.Dto.UserRegistrationDto;
@@ -38,13 +39,14 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email);
         if(user==null)
             throw new UsernameNotFoundException("Invalid email");
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),mapRolesToAuthorities());
+        UserPrincipal principal = new UserPrincipal(user);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),principal.getAuthorities());
     }
 
-    //TODO Implement saving and getting authorities from DB
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(){
-        LinkedList authorities = new LinkedList<SimpleGrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("USER"));
-        return authorities;
-    }
+//    //TODO Implement saving and getting authorities from DB
+//    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(){
+//        LinkedList authorities = new LinkedList<SimpleGrantedAuthority>();
+//        authorities.add(new SimpleGrantedAuthority("USER"));
+//        return authorities;
+//    }
 }
