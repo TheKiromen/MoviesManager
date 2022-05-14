@@ -33,8 +33,6 @@ public class User {
     @NotNull
     @NotEmpty
     private String authority;
-    @OneToMany(mappedBy = "user")
-    private Set<Review> reviews;
 
     public User(String username, String email, String password) {
         this.username = username;

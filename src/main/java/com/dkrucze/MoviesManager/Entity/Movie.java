@@ -31,8 +31,6 @@ public class Movie {
     private Date premiere;
     private String posterURL;
     private String description;
-    @OneToMany(mappedBy = "movie")
-    private Set<Review> reviews;
 
     public Movie(String title, int duration, String director, Date premiere) {
         super();
