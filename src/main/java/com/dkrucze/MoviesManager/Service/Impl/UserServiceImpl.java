@@ -6,15 +6,11 @@ import com.dkrucze.MoviesManager.Repository.UserRepository;
 import com.dkrucze.MoviesManager.Service.UserService;
 import com.dkrucze.MoviesManager.Web.Dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.LinkedList;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -42,11 +38,4 @@ public class UserServiceImpl implements UserService {
         UserPrincipal principal = new UserPrincipal(user);
         return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),principal.getAuthorities());
     }
-
-//    //TODO Implement saving and getting authorities from DB
-//    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(){
-//        LinkedList authorities = new LinkedList<SimpleGrantedAuthority>();
-//        authorities.add(new SimpleGrantedAuthority("USER"));
-//        return authorities;
-//    }
 }
