@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>MoviesManager</title>
@@ -8,14 +9,8 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
-        <div class="row">
-            <h1>MoviesManager - Movie list</h1>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3">
-                <a th:href="@{api/movies/new}" class="btn btn-primary btn-sm mb-3">Add new Movie</a>
-            </div>
+        <div class="row mt-3 mb-3">
+            <h1><b>MoviesManager - Movie list</b></h1>
         </div>
 
         <table class="table table-striped">
@@ -26,6 +21,8 @@
                 <th>Director</th>
                 <th>Duration (min)</th>
                 <th>Release date</th>
+                <th sec:authorize="hasAuthority('ADMIN')">EDIT</th>
+                <th sec:authorize="hasAuthority('ADMIN')">DELETE</th>
             </tr>
             </thead>
             <tbody>
@@ -35,6 +32,9 @@
                 <td th:text="${movie.director}"></td>
                 <td th:text="${movie.duration}"></td>
                 <td th:text="${movie.premiere}"></td>
+                <!-- TODO Add buttons with correct mappings-->
+                <td sec:authorize="hasAuthority('ADMIN')">yellow-edit-btn</td>
+                <td sec:authorize="hasAuthority('ADMIN')">red-delete-btn</td>
             </tr>
             </tbody>
         </table>
