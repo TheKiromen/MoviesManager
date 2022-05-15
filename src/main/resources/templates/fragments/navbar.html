@@ -1,6 +1,6 @@
 <nav th:fragment="navbar" class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Movies Manager</a>
+        <a class="navbar-brand ms-2" href="/">Movies Manager</a>
         <div sec:authorize="isAnonymous()">
             <a href="/login"><button class="btn btn-dark me-2" type="button">Login</button></a>
             <a href="/register"><button class="btn btn-dark me-2" type="button">Register</button></a>

@@ -20,7 +20,6 @@ public class MovieController {
     @GetMapping("movie/{id}")
     public String getMovieDetails(@PathVariable Long id,Model model){
         model.addAttribute("movie",movieService.getMovieById(id));
-        //TODO finish template
         return "movie_details";
     }
 

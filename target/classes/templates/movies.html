@@ -13,28 +13,33 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
             <h1><b>MoviesManager - Movie list</b></h1>
         </div>
 
-        <table class="table table-striped">
+        <table class="table table-striped align-middle">
             <thead class="table-secondary">
             <tr>
-                <th>Id</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Id</th>
                 <th>Title</th>
                 <th>Director</th>
                 <th>Duration (min)</th>
                 <th>Release date</th>
-                <th sec:authorize="hasAuthority('ADMIN')">EDIT</th>
-                <th sec:authorize="hasAuthority('ADMIN')">DELETE</th>
+                <th sec:authorize="hasAuthority('ADMIN')" class="text-center">EDIT</th>
+                <th sec:authorize="hasAuthority('ADMIN')" class="text-center">DELETE</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="movie:${movies}">
-                <td th:text="${movie.id}"></td>
+                <td sec:authorize="hasAuthority('ADMIN')" th:text="${movie.id}"></td>
+                <!-- TODO Add mapping to display details-->
                 <td th:text="${movie.title}"></td>
                 <td th:text="${movie.director}"></td>
                 <td th:text="${movie.duration}"></td>
                 <td th:text="${movie.premiere}"></td>
-                <!-- TODO Add buttons with correct mappings-->
-                <td sec:authorize="hasAuthority('ADMIN')">yellow-edit-btn</td>
-                <td sec:authorize="hasAuthority('ADMIN')">red-delete-btn</td>
+                <!-- TODO Add mapping to buttons-->
+                <td sec:authorize="hasAuthority('ADMIN')" class="text-center">
+                    <button type="button" class="btn btn-warning">EDIT</button>
+                </td>
+                <td sec:authorize="hasAuthority('ADMIN')" class="text-center">
+                    <button type="button" class="btn btn-danger">DELETE</button>
+                </td>
             </tr>
             </tbody>
         </table>
