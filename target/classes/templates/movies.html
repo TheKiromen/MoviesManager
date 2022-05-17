@@ -28,17 +28,23 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
             <tbody>
             <tr th:each="movie:${movies}">
                 <td sec:authorize="hasAuthority('ADMIN')" th:text="${movie.id}"></td>
-                <!-- TODO Add mapping to display details-->
-                <td th:text="${movie.title}"></td>
+                <td>
+                    <b>
+                        <a class="link-dark text-decoration-none" th:href="@{/api/movie/{id} (id=${movie.id})}" th:text="${movie.title}"></a>
+                    </b>
+                </td>
                 <td th:text="${movie.director}"></td>
                 <td th:text="${movie.duration}"></td>
                 <td th:text="${movie.premiere}"></td>
-                <!-- TODO Add mapping to buttons-->
                 <td sec:authorize="hasAuthority('ADMIN')" class="text-center">
-                    <button type="button" class="btn btn-warning">EDIT</button>
+                    <a th:href="@{/api/movies/edit/{id} (id=${movie.id})}">
+                        <button type="button" class="btn btn-warning">EDIT</button>
+                    </a>
                 </td>
                 <td sec:authorize="hasAuthority('ADMIN')" class="text-center">
-                    <button type="button" class="btn btn-danger">DELETE</button>
+                    <a th:href="@{/api/movies/delete/{id} (id=${movie.id})}">
+                        <button type="button" class="btn btn-danger">DELETE</button>
+                    </a>
                 </td>
             </tr>
             </tbody>

@@ -8,11 +8,10 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<!-- //TODO Get contents from model object (from DB) -->
 <div class="container">
-    <div class="row mt-4">
+    <div class="row mt-4" th:object="${movie}">
         <div class="col-md-4 px-0">
-            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg" class="img-fluid rounded" alt="Image cannot be loaded">
+            <img th:src="*{posterURL}" class="img-fluid rounded" alt="Image cannot be loaded">
         </div>
         <div class="col">
             <div class="container">
@@ -21,33 +20,34 @@
                         <h2><b>Title:</b></h2>
                     </div>
                     <div class="col">
-                        <h2>Content Content Content Content Content Content Content Content Content Content Content Content Content </h2>
+                        <h2 th:text="*{title}"></h2>
                     </div>
                 </div>
                 <hr>
                 <div class="row mt-3">
                     <div class="col-md-auto">
-                        <h5><b>Release date:</b></h5>
+                        <h5><b>Director:</b></h5>
                     </div>
                     <div class="col">
-                        <h5>Content</h5>
+                        <h5 th:text="*{director}"></h5>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-auto">
-                        <h5><b>Director:</b></h5>
+                        <h5><b>Release date:</b></h5>
                     </div>
                     <div class="col">
-                        <h5>Content</h5>
+                        <h5 th:text="*{premiere}"></h5>
                     </div>
-                </div><div class="row mt-3">
-                <div class="col-md-auto">
-                    <h5><b>Description:</b></h5>
                 </div>
-                <div class="col">
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit, sem sit amet dignissim blandit, orci purus sollicitudin lectus, eget pulvinar nisi elit eu elit. Duis et sapien luctus, lobortis libero ac, tincidunt lectus. Nam tincidunt dui sed sem finibus, in cursus ex gravida. Suspendisse quis sollicitudin mauris. In consectetur magna a aliquam varius. Ut ac suscipit turpis. Fusce laoreet enim lacinia magna viverra fringilla. Pellentesque turpis ligula, condimentum a maximus in, imperdiet eget lorem. Quisque dignissim semper purus a luctus. Suspendisse vulputate nulla vel quam ornare, nec molestie nulla sagittis. Vestibulum purus ipsum, mattis at condimentum quis, aliquet eget turpis. In ut placerat leo, a egestas odio. </h5>
+                <div class="row mt-3">
+                    <div class="col-md-auto">
+                        <h5><b>Description:</b></h5>
+                    </div>
+                    <div class="col">
+                        <h5 th:text="*{description}"></h5>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
