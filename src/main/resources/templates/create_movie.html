@@ -17,22 +17,32 @@
                         <!--Movie title-->
                         <div class="form-group">
                             <label>Movie title:</label>
-                            <input type="text" name="title" th:field="*{title}" placeholder="Enter movie title" class="form-control"/>
+                            <input type="text" required="required" name="title" th:field="*{title}" placeholder="Enter movie title" class="form-control"/>
                         </div>
                         <!--Movie duration-->
                         <div class="form-group">
                             <label>Duration:</label>
-                            <input type="number" name="duration" th:field="*{duration}" min="0" placeholder="Enter movie duration in minutes" class="form-control"/>
+                            <input type="number" required="required" name="duration" th:field="*{duration}" min="0" placeholder="Enter movie duration in minutes" class="form-control"/>
                         </div>
                         <!--Movie director-->
                         <div class="form-group">
                             <label>Director:</label>
-                            <input type="text" name="director" th:field="*{director}" placeholder="Enter movie director" class="form-control"/>
+                            <input type="text" required="required" name="director" th:field="*{director}" placeholder="Enter movie director" class="form-control"/>
                         </div>
                         <!--Movie premiere-->
                         <div class="form-group">
                             <label>Premiere:</label>
-                            <input type="date" name="premiere" th:field="*{premiere}" placeholder="Enter movie premiere" class="form-control"/>
+                            <input type="date" required="required" name="premiere" th:field="*{premiere}" placeholder="Enter movie premiere" class="form-control"/>
+                        </div>
+                        <!--Movie poster-->
+                        <div class="form-group">
+                            <label>Poster URL:</label>
+                            <input type="url" name="url" th:field="*{posterURL}" placeholder="Enter poster URL" class="form-control"/>
+                        </div>
+                        <!--Movie description-->
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea class="form-control" name="description" th:field="*{description}" placeholder="Enter movie description" rows="2"></textarea>
                         </div>
                         <!--Submit button-->
                         <br>

@@ -23,7 +23,6 @@ public class MovieController {
         return "movie_details";
     }
 
-    //TODO update form to include all fields
     @GetMapping("/movies/new")
     public String createMovieForm(Model model){
         Movie movie = new Movie();
@@ -31,14 +30,13 @@ public class MovieController {
         return "create_movie";
     }
 
-    //TODO update form to include all fields
     @GetMapping("/movies/edit/{id}")
     public String editMovieForm(@PathVariable Long id, Model model){
         model.addAttribute("movie",movieService.getMovieById(id));
         return "edit_movie";
     }
 
-    @PostMapping
+    @PostMapping("/movies")
     public String saveMovie(@ModelAttribute("movie") Movie movie){
         movieService.saveMovie(movie);
         return "redirect:/";
@@ -52,6 +50,8 @@ public class MovieController {
         existingMovie.setDirector(movie.getDirector());
         existingMovie.setDuration(movie.getDuration());
         existingMovie.setPremiere(movie.getPremiere());
+        existingMovie.setPosterURL(movie.getPosterURL());
+        existingMovie.setDescription(movie.getDescription());
 
         movieService.updateMovie(existingMovie);
         return "redirect:/";
