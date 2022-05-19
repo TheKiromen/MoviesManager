@@ -34,6 +34,16 @@
                         <label>Premiere:</label>
                         <input type="date" name="premiere" th:field="*{premiere}" placeholder="Enter movie premiere" class="form-control"/>
                     </div>
+                    <!--Movie poster-->
+                    <div class="form-group">
+                        <label>Poster URL:</label>
+                        <input type="url" name="url" th:field="*{posterURL}" placeholder="Enter poster URL" class="form-control"/>
+                    </div>
+                    <!--Movie description-->
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea class="form-control" name="description" th:field="*{description}" placeholder="Enter movie description" rows="2"></textarea>
+                    </div>
                     <!--Submit button-->
                     <br>
                     <div class="box-footer">
