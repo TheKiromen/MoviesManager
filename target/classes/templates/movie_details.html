@@ -9,9 +9,9 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 <div class="container">
-    <div class="row mt-4 mb-5 p-1 border shadow bg-white rounded" th:object="${movie}">
+    <div class="row mt-4 mb-5 border shadow bg-white rounded" th:object="${movie}">
         <div class="col-md-4 px-0" align="center">
-            <img th:src="*{posterURL}" class="img-fluid rounded" alt="Image cannot be loaded">
+            <img th:src="*{posterURL}" class="img-fluid rounded border" alt="Image cannot be loaded">
         </div>
         <div class="col">
             <div class="container">
@@ -44,7 +44,7 @@
                     <div class="col-md-auto">
                         <h5><b>Description:</b></h5>
                     </div>
-                    <div class="col">
+                    <div class="col mb-2">
                         <h5 th:text="*{description}"></h5>
                     </div>
                 </div>
