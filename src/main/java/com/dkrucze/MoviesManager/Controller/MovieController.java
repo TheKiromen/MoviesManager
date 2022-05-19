@@ -17,10 +17,10 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
-    public String listMovies(Model model){
-        model.addAttribute("movies",movieService.getAllMovies());
-        return "movies";
+    @GetMapping("movie/{id}")
+    public String getMovieDetails(@PathVariable Long id,Model model){
+        model.addAttribute("movie",movieService.getMovieById(id));
+        return "movie_details";
     }
 
     @GetMapping("/movies/new")
@@ -39,7 +39,7 @@ public class MovieController {
     @PostMapping("/movies")
     public String saveMovie(@ModelAttribute("movie") Movie movie){
         movieService.saveMovie(movie);
-        return "redirect:/api/movies";
+        return "redirect:/";
     }
 
     @PostMapping("/movies/edit/{id}")
@@ -50,15 +50,17 @@ public class MovieController {
         existingMovie.setDirector(movie.getDirector());
         existingMovie.setDuration(movie.getDuration());
         existingMovie.setPremiere(movie.getPremiere());
+        existingMovie.setPosterURL(movie.getPosterURL());
+        existingMovie.setDescription(movie.getDescription());
 
         movieService.updateMovie(existingMovie);
-        return "redirect:/api/movies";
+        return "redirect:/";
     }
 
     @GetMapping("/movies/delete/{id}")
     public String deleteMovie(@PathVariable Long id){
         movieService.deleteMovie(id);
-        return "redirect:/api/movies";
+        return "redirect:/";
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Getter
@@ -18,15 +19,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     @NotEmpty
     @Column(unique = true)
     private String username;
+    @NotNull
     @NotEmpty
     @Column(unique = true)
     private String email;
+    @NotNull
     @NotEmpty
     private String password;
-    @OneToMany(mappedBy = "user")
-    private Set<Review> reviews;
+    @NotNull
+    @NotEmpty
+    private String authority;
 
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.authority="USER";
+    }
 }
