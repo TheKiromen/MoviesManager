@@ -43,12 +43,18 @@ public class MovieController {
     public String getMovieDetails(@PathVariable Long id,Model model){
         model.addAttribute("movie",movieService.getMovieById(id));
         //Create list of reviews
-        List<ReviewTemplate> reviews = new ArrayList<>();
+        List<ReviewTemplate> reviewsModel = new ArrayList<>();
         //Get all reviews
-        //Check if review id matches logged in user
-        //AND Check if movie id matches
+        List<Review> reviewList = reviewRepository.findAll();
 
-        model.addAttribute("reviews",reviews);
+        for(Review r : reviewList){
+            //Check if the review is for displayed movie
+            if(id == r.getMovie().getId()){
+                //Add review to the list
+                reviewsModel.add(new ReviewTemplate(r.getUser().getUsername(),r.getReview()));
+            }
+        }
+        model.addAttribute("reviews",reviewsModel);
         return "movie_details";
     }
 

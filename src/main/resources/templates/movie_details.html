@@ -52,5 +52,14 @@
         </div>
     </div>
 </div>
+<!-- Reviews -->
+<div class="container">
+    <div class="col mb-5">
+        <div class="row p-3 mb-2 bg-secondary text-white rounded" th:each="review:${reviews}">
+            <b th:text="${review.username}+':'"></b>
+            <span th:text="${review.review}"></span>
+        </div>
+    </div>
+</div>
 </body>
 </html>
