@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,6 +32,8 @@ public class Movie {
     private String posterURL;
     @Column(length = 65535,columnDefinition="Text")
     private String description;
+    @OneToMany(mappedBy = "movie")
+    private Set<Review> reviews;
 
     public Movie(String title, int duration, String director, Date premiere) {
         super();

@@ -23,6 +23,13 @@
                             <b><a href="/" th:href="@{/login}">You can log in here!</a></b>
                         </div>
                     </div>
+                    <div th:if="${param.failure}">
+                        <div class="alert alert-danger">
+                            <b>User already exists!</b>
+                            <br>
+                            Please choose unique username and email.
+                        </div>
+                    </div>
 
                     <!--Username-->
                     <div class="form-group">

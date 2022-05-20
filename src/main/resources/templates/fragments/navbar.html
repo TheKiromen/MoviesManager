@@ -1,13 +1,12 @@
 <nav th:fragment="navbar" class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand ms-2" href="/">Movies Manager</a>
-        <div sec:authorize="isAuthenticated()" class="navbar-text ms-2">
-            Logged in as: <span sec:authentication="principal.username" ></span>
+        <div sec:authorize="isAuthenticated()" class="navbar-text ms-2 me-auto">
+            Logged in as: <span sec:authentication="principal.username"></span>
          </div>
         <div sec:authorize="isAnonymous()">
             <a href="/login"><button class="btn btn-dark me-2" type="button">Login</button></a>
             <a href="/register"><button class="btn btn-dark me-2" type="button">Register</button></a>
-
         </div>
         <div sec:authorize="isAuthenticated()">
             <a href="/api/movies/new" sec:authorize="hasAuthority('ADMIN')"><button class="btn btn-dark me-2" type="button">Add new Movie</button></a>
