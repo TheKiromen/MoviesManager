@@ -52,6 +52,11 @@
         </div>
     </div>
 </div>
+<div class="container mb-4 p-0">
+    <a th:href="@{/api/movie/{id}/review (id=${movie.id})}">
+        <button type="button" class="btn btn-success">Create new review</button>
+    </a>
+</div>
 <!-- Reviews -->
 <div class="container">
     <div class="col mb-5">
