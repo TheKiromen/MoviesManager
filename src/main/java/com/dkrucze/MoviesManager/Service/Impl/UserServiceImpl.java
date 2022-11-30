@@ -36,6 +36,9 @@ public class UserServiceImpl implements UserService {
         if(user==null)
             throw new UsernameNotFoundException("Invalid email");
         UserPrincipal principal = new UserPrincipal(user);
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),principal.getAuthorities());
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword()
+                ,principal.getAuthorities());
     }
 }
