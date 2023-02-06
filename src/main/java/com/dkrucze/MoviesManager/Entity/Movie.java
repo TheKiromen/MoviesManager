@@ -2,6 +2,7 @@ package com.dkrucze.MoviesManager.Entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -21,13 +22,13 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
+    @NonNull
     private String title;
     @Min(0)
     private int duration=0;
-    @NotNull
+    @NonNull
     private String director;
-    @NotNull
+    @NonNull
     private Date premiere;
     private String posterURL;
     @Column(length = 65535,columnDefinition="Text")

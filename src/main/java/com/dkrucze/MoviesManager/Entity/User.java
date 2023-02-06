@@ -2,6 +2,7 @@ package com.dkrucze.MoviesManager.Entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -19,18 +20,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NonNull
     @NotEmpty
     @Column(unique = true)
     private String username;
-    @NotNull
+    @NonNull
     @NotEmpty
     @Column(unique = true)
     private String email;
-    @NotNull
+    @NonNull
     @NotEmpty
     private String password;
-    @NotNull
+    @NonNull
     @NotEmpty
     private String authority;
     @OneToMany(mappedBy = "user")
